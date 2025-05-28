@@ -63,7 +63,7 @@ func ListTasks(w http.ResponseWriter, r *http.Request) {
 	limit := listResponse.Limit
 
 	allTasks := db.GetAllTasks()
-
+	allTasks = filterTasks(allTasks, r)
 	start := (page - 1) * limit // start at zero based index
 	end := start + limit
 	if start > len(allTasks) {
@@ -80,4 +80,19 @@ func ListTasks(w http.ResponseWriter, r *http.Request) {
 
 	w.Header().Set("Content-Type", "application/json")
 	json.NewEncoder(w).Encode(listResponse)
+}
+
+func filterTasks(tasks []model.Task, r *http.Request) []model.Task {
+	statusFilter := r.URL.Query().Get("status")
+	if statusFilter == "" {
+		return tasks // no filter applied
+	}
+
+	filtered := make([]model.Task, 0)
+	for _, task := range tasks {
+		if task.Status == statusFilter {
+			filtered = append(filtered, task)
+		}
+	}
+	return filtered
 }
