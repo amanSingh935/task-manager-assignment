@@ -9,7 +9,8 @@ Run the command: `go run main.go` from the root directory(inside task-manager)
   "name": "Backup Job 8",
   "status": "completed",
   "trigger_time": "2025-06-01T08:00:00Z"
-}'```
+}'
+```
 
 
 ### Update task:
@@ -19,7 +20,9 @@ Run the command: `go run main.go` from the root directory(inside task-manager)
   "name": "New Name Job",
   "status": "active",
   "trigger_time": "2025-06-01T08:00:00Z"
-}'```
+}'
+```
+
 
 ### Get task:
 ```curl --location --request GET 'http://localhost:8080/tasks/790aa9d6-4a4b-4be0-8c04-bb772ffeb43d' \
@@ -28,7 +31,8 @@ Run the command: `go run main.go` from the root directory(inside task-manager)
   "name": "Backup Job",
   "status": "active",
   "trigger_time": "2025-06-01T08:00:00Z"
-}'```
+}'
+```
 
 
 ### Delete task:
@@ -43,5 +47,6 @@ Run the command: `go run main.go` from the root directory(inside task-manager)
   "status": "active",
   "trigger_time": "2025-06-01T08:00:00Z"
 }'
-'```
+'
+```
 
